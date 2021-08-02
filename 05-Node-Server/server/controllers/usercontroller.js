@@ -9,29 +9,6 @@ const User = require('../db').import('../models/user');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-//Create a new endpoint : /create
-//The endpoint is going to be a post request
-//Have an object that matches the model of UserTable (email/password).
-//Let sequelize create a new record in the database (create)
-
-// THIS IS FROM THE previous Videos
-// router.post('/create', function (req, res) {
-//   let userModel = {
-//     email: req.body.user.email,
-//     password: req.body.user.password,
-//   };
-//   User.create(userModel)
-//     .then(function (user) {
-//       let responseObject = {
-//         user: user,
-//       };
-//       res.json(responseObject);
-//     })
-//     .catch(function (err) {
-//       res.status(500).json({ error: err });
-//     });
-// });
-
 // this is from 4:02 token
 router.post('/create', function (req, res) {
   User.create({
