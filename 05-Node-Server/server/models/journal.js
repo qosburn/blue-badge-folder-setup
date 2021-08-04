@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    //data needs to be changed to date -- when dropping tables is covered
     date: {
       type: DataTypes.STRING,
       allowNull: false,

@@ -3,7 +3,6 @@
 // let sequelize = require('../db');
 // let User = sequelize.import('../models/user.js');
 
-const { use } = require('./journalcontroller');
 const router = require('express').Router();
 const User = require('../db').import('../models/user');
 const jwt = require('jsonwebtoken');
@@ -17,8 +16,9 @@ router.post('/create', function (req, res) {
   })
     .then(function createSuccess(user) {
       let token = jwt.sign(
-        { id: user.id, email: user.email },
-        process.env.JWT_SECRET,
+        { id: user.id },
+        //process.env.JWT_SECRET,
+        'i_am_a_secret',
         {
           expiresIn: 60 * 60 * 24,
         }
@@ -92,7 +92,7 @@ router.post('/login', function (req, res) {
           user.password,
           function (err, matches) {
             if (matches) {
-              let token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+              let token = jwt.sign({ id: user.id }, 'i_am_a_secret', {
                 expiresIn: 60 * 60 * 24,
               });
               res.status(200).json({
