@@ -17,8 +17,8 @@ router.post('/create', function (req, res) {
     .then(function createSuccess(user) {
       let token = jwt.sign(
         { id: user.id },
-        //process.env.JWT_SECRET,
-        'i_am_a_secret',
+        process.env.JWT_SECRET,
+        /*'i_am_a_secret',*/
         {
           expiresIn: 60 * 60 * 24,
         }
@@ -92,9 +92,13 @@ router.post('/login', function (req, res) {
           user.password,
           function (err, matches) {
             if (matches) {
-              let token = jwt.sign({ id: user.id }, 'i_am_a_secret', {
-                expiresIn: 60 * 60 * 24,
-              });
+              let token = jwt.sign(
+                { id: user.id },
+                process.env.JWT_SECRET,
+                /*'i_am_a_secret',*/ {
+                  expiresIn: 60 * 60 * 24,
+                }
+              );
               res.status(200).json({
                 user: user,
                 message: 'User successfully logged in!',
