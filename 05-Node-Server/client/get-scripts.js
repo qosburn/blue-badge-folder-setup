@@ -61,11 +61,11 @@ function displayMine() {
 
           editBtn.setAttribute('class', 'btn btn-dark editBTN');
           editBtn.setAttribute('type', 'button');
-          editBtn.setAttribute('onclick', 'editJournal(${current.id})');
+          editBtn.setAttribute('onclick', `editJournal(${current.id})`);
 
           deleteBtn.setAttribute('class', 'btn btn-dark deleteBtn');
           deleteBtn.setAttribute('type', 'button');
-          deleteBtn.setAttribute('onclick', 'deleteJournal(${current.id})');
+          deleteBtn.setAttribute('onclick', `deleteJournal(${current.id})`);
 
           header.textContent = title;
           subtitle.textContent = date;
